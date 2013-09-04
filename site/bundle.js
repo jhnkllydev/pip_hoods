@@ -107,7 +107,10 @@ var marker = L.marker([0,0], {icon: myIcon} ).addTo(map); //Null Island
 
 var msg="Trying high accuracy";
 var hilo="high";
-document.getElementById('me').onclick = function() {
+document.addEventListener("deviceready", findMe, true);
+//document.getElementById('me').onclick = function() {
+document.getElementById('me').onclick = findMe();
+function findMe() {
 //navigator.geolocation.getCurrentPosition(function(pos) {
     navigator.geolocation.watchPosition(
         successCallback,
@@ -170,6 +173,8 @@ function successCallback(pos) {
                 navigator.notification.alert("New hood.");
                 navigator.notification.beep(1);  
             //}
+        } else {
+            document.getElementById('hilo').innerHTML = "no nav.notif";
         }
         document.getElementById('me').innerHTML = res[0].feature.properties.name;
     } else {
