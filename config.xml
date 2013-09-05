@@ -4,14 +4,19 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.greeninfo.pip_hoods"
         version   = "1.0.0">
-    <name>MobileMapStarter</name>
+    <name>neighborhoods</name>
     <description>
         
     </description>
     <author href="http://www.greeninfo.org/" email="john@greeninfo.org">
         John Kelly @ GreenInfo Network
     </author>
-
+    
+        <icon src="icons/icon.png" /> <!-- default icon -->
+        <icon src="icons/ios/57.png" gap:platform="ios" width="57" height="57" />
+        <icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!--  36 x 36 px -->
+        
+        <gap:splash src="splash/splash.png" /> <!-- the default splash screen -->        
     <!-- PERMISSIONS -->
     <!--
     This is important for the credibility of your application, if distributed to strangers via the App Store.

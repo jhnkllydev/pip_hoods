@@ -170,11 +170,11 @@ function successCallback(pos) {
     if (res.length) {
         //navigator.notification.alert("New hood.");
         if ( navigator.notification ) {
-            //if ( document.getElementById('me').innerHTML != res[0].feature.properties.name ) {
+            if ( document.getElementById('me').innerHTML != res[0].feature.properties.name ) {
                 navigator.notification.vibrate(1000);
-                navigator.notification.alert("New hood.");
-                navigator.notification.beep(1);  
-            //}
+                navigator.notification.alert("Entering "+res[0].feature.properties.name);
+                //navigator.notification.beep(1);  
+            }
         } else {
             document.getElementById('hilo').innerHTML = "no nav.notif";
         }
