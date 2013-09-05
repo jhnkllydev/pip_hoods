@@ -111,6 +111,7 @@ document.addEventListener("deviceready", findMe, true);
 //document.getElementById('me').onclick = function() {
 document.getElementById('me').onclick = findMe();
 function findMe() {
+    document.getElementById('hilo').innerHTML = "finding";
 //navigator.geolocation.getCurrentPosition(function(pos) {
     navigator.geolocation.watchPosition(
         successCallback,
@@ -163,10 +164,11 @@ function successCallback(pos) {
     //var longitude = pos.coords.longitude;
     //$('body').append("<p>Your location is: " + latitude + "," + longitude+" </p><p>Accuracy="+position.coords.accuracy+"m");
     msg = +pos.coords.accuracy+"m "; // + hilo;
-    document.getElementById('hilo').innerHTML = msg;
+    //document.getElementById('hilo').innerHTML = msg;
     var res = leafletPip.pointInLayer(
         [pos.coords.longitude, pos.coords.latitude], gjLayer);
     if (res.length) {
+        //navigator.notification.alert("New hood.");
         if ( navigator.notification ) {
             //if ( document.getElementById('me').innerHTML != res[0].feature.properties.name ) {
                 navigator.notification.vibrate(1000);
