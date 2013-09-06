@@ -30,30 +30,13 @@ info.update = function (props) {
 
 info.addTo(map);
 
-//map.addControl( new L.Control.Gps() );//inizialize gps control
-
-/* 
-function onSuccess(position) {
-    var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                        'Longitude: ' + position.coords.longitude     + '<br />' +
-                        '<hr />'      + element.innerHTML;
-}
-
-function onError(error) {
-    alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
-
-var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { frequency: 3000 });
- */
 
 function style(feature) {
     return {
         //fillColor: getColor(feature.properties.density),
-        weight: 0.5,
-        opacity: 1,
-        color: '#888',
+        weight: 2.5,
+        opacity: 0.5,
+        color: '#FAF4B7',
         //dashArray: '3',
         fillOpacity: 0
     };
@@ -116,7 +99,7 @@ function findMe() {
     navigator.geolocation.watchPosition(
         successCallback,
         errorCallback_highAccuracy,
-        {maximumAge:600000, timeout:5000, enableHighAccuracy: true}
+        {maximumAge:600000, timeout:15000, enableHighAccuracy: true}
     );
 };
 
@@ -129,7 +112,7 @@ function errorCallback_highAccuracy(error) {
         msg = "switching to low accuracy";
         hilo = "low";
         document.getElementById('hilo').innerHTML = msg;
-        navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.watchPosition(
                successCallback, 
                errorCallback_lowAccuracy,
                {maximumAge:600000, timeout:10000, enableHighAccuracy: false});
