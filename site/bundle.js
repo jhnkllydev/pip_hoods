@@ -13,6 +13,9 @@ L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-p71hkhvk/{z}/{x}/{y}.png
 
 gjLayer.addTo(map);
 
+//L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-qwnj26en/{z}/{x}/{y}.png')
+    //.addTo(map); //streets_and_labels (won't overlay vectors?)
+    
 var info = L.control();
 
 info.onAdd = function (map) {
@@ -34,8 +37,8 @@ info.addTo(map);
 function style(feature) {
     return {
         //fillColor: getColor(feature.properties.density),
-        weight: 2.5,
-        opacity: 0.5,
+        weight: 9.5,
+        opacity: 0.25,
         color: '#FAF4B7',
         //dashArray: '3',
         fillOpacity: 0
@@ -115,7 +118,7 @@ function errorCallback_highAccuracy(error) {
         navigator.geolocation.watchPosition(
                successCallback, 
                errorCallback_lowAccuracy,
-               {maximumAge:600000, timeout:10000, enableHighAccuracy: false});
+               {maximumAge:10000, timeout:10000, enableHighAccuracy: false});
         return;
     }
     
@@ -169,6 +172,8 @@ function successCallback(pos) {
     var oldMarker = L.marker([pos.coords.latitude, pos.coords.longitude], {icon: orangeIcon} ).addTo(map);
     var newLatLng = new L.LatLng(pos.coords.latitude, pos.coords.longitude);
     marker.setLatLng(newLatLng); 
+    
+    map.setView(newLatLng, 15);
 
 }
 // end http://jsfiddle.net/CvSW4/
