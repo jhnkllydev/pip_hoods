@@ -8,7 +8,9 @@ var leafletPip = require('../'),
 	});
 
 //L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-l1m85h7s/{z}/{x}/{y}.png')
-L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-p71hkhvk/{z}/{x}/{y}.png')
+//L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-p71hkhvk/{z}/{x}/{y}.png')
+L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-zliae3w5/{z}/{x}/{y}.png') //gda
+L.tileLayer('http://a.tiles.mapbox.com/v3/http://a.tiles.mapbox.com/v3/jhnklly.map-x4jkulbe/{z}/{x}/{y}.png') //no buildings
     .addTo(map);
 
 gjLayer.addTo(map);
@@ -102,7 +104,7 @@ function findMe() {
     navigator.geolocation.watchPosition(
         successCallback,
         errorCallback_highAccuracy,
-        {maximumAge:600000, timeout:15000, enableHighAccuracy: true}
+        {maximumAge:30000, timeout:15000, enableHighAccuracy: true}
     );
 };
 
@@ -118,7 +120,7 @@ function errorCallback_highAccuracy(error) {
         navigator.geolocation.watchPosition(
                successCallback, 
                errorCallback_lowAccuracy,
-               {maximumAge:10000, timeout:10000, enableHighAccuracy: false});
+               {maximumAge:20000, timeout:10000, enableHighAccuracy: false});
         return;
     }
     
@@ -157,8 +159,8 @@ function successCallback(pos) {
         //navigator.notification.alert("New hood.");
         if ( navigator.notification ) {
             if ( document.getElementById('me').innerHTML != res[0].feature.properties.name ) {
-                navigator.notification.vibrate(1000);
-                navigator.notification.alert("Entering "+res[0].feature.properties.name);
+                //navigator.notification.vibrate(1000);
+                //navigator.notification.alert("Entering "+res[0].feature.properties.name);
                 //navigator.notification.beep(1);  
             }
         } else {
@@ -173,7 +175,8 @@ function successCallback(pos) {
     var newLatLng = new L.LatLng(pos.coords.latitude, pos.coords.longitude);
     marker.setLatLng(newLatLng); 
     
-    map.setView(newLatLng, 15);
+    //map.setView(newLatLng, 15);
+    map.panTo(newLatLng);
 
 }
 // end http://jsfiddle.net/CvSW4/
