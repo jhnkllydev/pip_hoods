@@ -10,7 +10,7 @@ var leafletPip = require('../'),
 //L.tileLayer('http://a.tiles.mapbox.com/v3/tmcw.map-l1m85h7s/{z}/{x}/{y}.png')
 //L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-p71hkhvk/{z}/{x}/{y}.png')
 L.tileLayer('http://a.tiles.mapbox.com/v3/greeninfo.map-zliae3w5/{z}/{x}/{y}.png') //gda
-L.tileLayer('http://a.tiles.mapbox.com/v3/http://a.tiles.mapbox.com/v3/jhnklly.map-x4jkulbe/{z}/{x}/{y}.png') //no buildings
+L.tileLayer('http://a.tiles.mapbox.com/v3/jhnklly.map-x4jkulbe/{z}/{x}/{y}.png') //no buildings
     .addTo(map);
 
 gjLayer.addTo(map);
